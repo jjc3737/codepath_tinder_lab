@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DraggableImageView" customModule="Codepath_Tinder" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="RKs-WG-gGo"/>
+                <outlet property="profileImage" destination="Y6L-ve-a2l" id="xZd-0e-9sA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="304" height="304"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ryan" translatesAutoresizingMaskIntoConstraints="NO" id="Y6L-ve-a2l">
+                    <rect key="frame" x="0.0" y="0.0" width="304" height="304"/>
+                    <gestureRecognizers/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="CqB-Da-YBG" appends="YES" id="FAR-eq-kb8"/>
+                    </connections>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Y6L-ve-a2l" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="O8g-KN-o2c"/>
+                <constraint firstItem="Y6L-ve-a2l" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="PNS-x2-JPx"/>
+                <constraint firstItem="Y6L-ve-a2l" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="fMU-KP-XkD"/>
+                <constraint firstItem="Y6L-ve-a2l" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="max-fN-VNy"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="24" y="28"/>
+        </view>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="CqB-Da-YBG">
+            <connections>
+                <action selector="handlePanWithRecognizer:" destination="-1" id="VMn-J3-w8v"/>
+            </connections>
+        </panGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="ryan" width="449" height="514"/>
+    </resources>
+</document>

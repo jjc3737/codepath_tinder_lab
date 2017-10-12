@@ -1,24 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Cards View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CardsViewController" customModule="Codepath_Tinder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nav_bar" translatesAutoresizingMaskIntoConstraints="NO" id="Ipg-c5-jRG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="0co-uM-7Uq"/>
+                                </constraints>
+                            </imageView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3D6-gS-2aS" customClass="DraggableImageView" customModule="Codepath_Tinder" customModuleProvider="target">
+                                <rect key="frame" x="8" y="72" width="359" height="479"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="6GN-lR-238" appends="YES" id="PbQ-Yo-xkk"/>
+                                </connections>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="action_buttons" translatesAutoresizingMaskIntoConstraints="NO" id="Jl1-HP-76L">
+                                <rect key="frame" x="0.0" y="559" width="375" height="108"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="108" id="c1w-HZ-lMA"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ipg-c5-jRG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1ru-y1-aVL"/>
+                            <constraint firstItem="3D6-gS-2aS" firstAttribute="top" secondItem="Ipg-c5-jRG" secondAttribute="bottom" constant="8" id="2AI-gl-alC"/>
+                            <constraint firstItem="Ipg-c5-jRG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7hR-eC-IFS"/>
+                            <constraint firstItem="Jl1-HP-76L" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="EGy-2E-b6g"/>
+                            <constraint firstItem="Jl1-HP-76L" firstAttribute="top" secondItem="3D6-gS-2aS" secondAttribute="bottom" constant="8" id="FCO-EJ-zkt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3D6-gS-2aS" secondAttribute="trailing" constant="8" id="Kad-wI-Cqn"/>
+                            <constraint firstItem="Jl1-HP-76L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vjm-kq-j8t"/>
+                            <constraint firstItem="3D6-gS-2aS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="iq2-Tv-XnJ"/>
+                            <constraint firstItem="Ipg-c5-jRG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="pa9-n5-TAj"/>
+                            <constraint firstItem="Jl1-HP-76L" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="raU-nl-lDg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="profileImageView" destination="3D6-gS-2aS" id="WPw-wW-0fF"/>
+                        <segue destination="T7n-T3-KLj" kind="presentation" identifier="showDetailPage" id="2Qt-dM-wLK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6GN-lR-238">
+                    <connections>
+                        <action selector="profileImageTapped:" destination="BYZ-38-t0r" id="bji-XF-umF"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="138.40000000000001" y="132.68365817091455"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="DM3-fi-qHf">
+            <objects>
+                <viewController id="T7n-T3-KLj" customClass="ProfileViewController" customModule="Codepath_Tinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dix-ax-h7F">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nav_bar2" translatesAutoresizingMaskIntoConstraints="NO" id="rBy-P1-53l">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="h7A-ni-POC"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="I45-ai-dXe" appends="YES" id="rhW-6O-nuO"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ryan" translatesAutoresizingMaskIntoConstraints="NO" id="2kb-wd-bsY">
+                                <rect key="frame" x="0.0" y="72" width="375" height="479"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rBy-P1-53l" firstAttribute="leading" secondItem="OyY-cr-VGR" secondAttribute="leading" id="DkS-OJ-nf4"/>
+                            <constraint firstItem="OyY-cr-VGR" firstAttribute="bottom" secondItem="2kb-wd-bsY" secondAttribute="bottom" constant="116" id="FO9-5U-NCb"/>
+                            <constraint firstItem="2kb-wd-bsY" firstAttribute="top" secondItem="rBy-P1-53l" secondAttribute="bottom" constant="8" id="Sgw-OL-aFQ"/>
+                            <constraint firstItem="rBy-P1-53l" firstAttribute="top" secondItem="Dix-ax-h7F" secondAttribute="top" id="bFT-MX-k2e"/>
+                            <constraint firstItem="2kb-wd-bsY" firstAttribute="trailing" secondItem="OyY-cr-VGR" secondAttribute="trailing" id="gXn-ND-pV8"/>
+                            <constraint firstItem="2kb-wd-bsY" firstAttribute="leading" secondItem="OyY-cr-VGR" secondAttribute="leading" id="jm6-pD-v4l"/>
+                            <constraint firstItem="rBy-P1-53l" firstAttribute="trailing" secondItem="OyY-cr-VGR" secondAttribute="trailing" id="p4e-gl-Fd4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OyY-cr-VGR"/>
+                    </view>
+                    <connections>
+                        <outlet property="profileView" destination="2kb-wd-bsY" id="2Mt-2e-Ua4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZTk-pW-XAg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="I45-ai-dXe">
+                    <connections>
+                        <action selector="tappedDone:" destination="T7n-T3-KLj" id="L2I-UH-0LY"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="836" y="132.68365817091455"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="action_buttons" width="320" height="108"/>
+        <image name="nav_bar" width="320" height="65"/>
+        <image name="nav_bar2" width="320" height="65"/>
+        <image name="ryan" width="449" height="514"/>
+    </resources>
 </document>
